@@ -1,7 +1,9 @@
 # WebServer project 
 
-## 1.- Webserver using C in Linux environment using SOAP protocol, the
+## 1.- Webserver using C in Linux environment using SOAP protocol
+
 methods to be implemented are: 
+
 ws_testParser
 ws_testReport
 
@@ -17,6 +19,7 @@ REQUEST:
 id - Integer type value to identify the data group 
 desc - Description, character string. 
 info - JSON type string with the following fields 
+
 	{
 	"fecha" : event date in format "aaaa-mm-dd hh:mm:ss"
 	"posicion" : Numeric value of type integer 
@@ -48,6 +51,7 @@ id - Integer type value
 RESPONSE
 
 info - JSON type string with the following data 
+
 	{
 	"estado" : 0 - exists, 1 - No information exists
 	"descripcion" : Description associated with the identifier 
