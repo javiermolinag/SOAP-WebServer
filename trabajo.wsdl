@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="trabajo"
+  targetNamespace="trabajo"
+  xmlns:tns="trabajo"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="trabajo"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="trabajo"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns="trabajo"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="getParserResponse"><!-- getParserResponse -->
+          <sequence>
+            <element name="status" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- getParserResponse::status -->
+            <element name="msg" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- getParserResponse::msg -->
+            <element name="ts" type="xsd:float" minOccurs="1" maxOccurs="1"/><!-- getParserResponse::ts -->
+          </sequence>
+    </complexType>
+    <!-- operation request element -->
+    <element name="testParser">
+      <complexType>
+          <sequence>
+            <element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns__testParser::id -->
+            <element name="desc" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns__testParser::desc -->
+            <element name="info" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns__testParser::info -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="testParserResponse">
+      <complexType>
+          <sequence>
+            <element name="r" type="ns:getParserResponse" minOccurs="0" maxOccurs="1"/><!-- ns__testParser::r -->
+          </sequence>
+      </complexType>
+    </element>
+  </schema>
+
+</types>
+
+<message name="testParserRequest">
+  <part name="Body" element="ns:testParser"/><!-- ns__testParser::ns__testParser -->
+</message>
+
+<message name="testParserResponse">
+  <part name="Body" element="ns:testParserResponse"/>
+</message>
+
+<portType name="trabajoPortType">
+  <operation name="testParser">
+    <documentation>Service definition of function ns__testParser</documentation>
+    <input message="tns:testParserRequest"/>
+    <output message="tns:testParserResponse"/>
+  </operation>
+</portType>
+
+<binding name="trabajo" type="tns:trabajoPortType">
+  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="testParser">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="trabajo">
+  <documentation>gSOAP 2.8.78 generated service definition</documentation>
+  <port name="trabajo" binding="tns:trabajo">
+    <SOAP:address location="http://localhost/trabajo"/>
+  </port>
+</service>
+
+</definitions>
